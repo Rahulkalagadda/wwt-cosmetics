@@ -12,7 +12,7 @@ export const BrandStory = () => {
               src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?q=80&w=1974&auto=format&fit=crop" 
               alt="Premium Skincare Warehouse" 
               loading="lazy" 
-              className="w-full h-full object-cover grayscale-[0.2] group-hover:scale-105 transition-transform duration-[3s]" 
+              className="w-full h-full object-cover grayscale-[0.2] group-hover:scale-105 transition-transform duration-[3000ms]" 
             />
           </div>
           <div className="absolute -bottom-6 -right-6 hidden md:block bg-black text-white p-8 shadow-2xl max-w-[240px] rounded-sm">
