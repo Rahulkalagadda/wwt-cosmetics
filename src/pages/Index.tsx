@@ -11,6 +11,7 @@ import { ProductLines } from "@/components/site/ProductLines";
 import { Testimonials } from "@/components/site/Testimonials";
 import { TrustBar } from "@/components/site/TrustBar";
 import { Footer } from "@/components/site/Footer";
+import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 
 const Index = () => {
   return (
@@ -28,6 +29,7 @@ const Index = () => {
       <Testimonials />
       <TrustBar />
       <Footer />
+      <WhatsAppButton />
     </main>
   );
 };
