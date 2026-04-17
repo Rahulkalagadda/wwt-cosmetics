@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Premium K-Beauty Design System
+   Soft neutral cream/beige palette with muted sage accents.
+   All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Core surfaces */
+    --background: 36 33% 97%;          /* warm cream */
+    --foreground: 25 15% 15%;          /* deep espresso */
+
+    --card: 0 0% 100%;
+    --card-foreground: 25 15% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 25 15% 15%;
+
+    /* Brand */
+    --primary: 25 18% 18%;             /* near-black warm */
+    --primary-foreground: 36 33% 97%;
+
+    --secondary: 35 28% 92%;           /* light beige */
+    --secondary-foreground: 25 15% 15%;
+
+    --muted: 35 22% 94%;
+    --muted-foreground: 25 8% 42%;
+
+    --accent: 95 18% 55%;              /* muted sage green */
+    --accent-foreground: 0 0% 100%;
+
+    /* Sand / cream tones */
+    --sand: 36 38% 88%;
+    --sand-deep: 32 28% 78%;
+    --cream: 38 45% 95%;
+
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 30 18% 88%;
+    --input: 30 18% 88%;
+    --ring: 95 18% 55%;
+
+    --radius: 0.25rem;
+
+    /* Editorial gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(38 45% 95%) 0%, hsl(36 38% 88%) 100%);
+    --gradient-soft: linear-gradient(180deg, hsl(36 33% 97%) 0%, hsl(35 28% 92%) 100%);
+
+    /* Shadows — soft and editorial */
+    --shadow-soft: 0 4px 24px -8px hsl(25 20% 30% / 0.08);
+    --shadow-card: 0 8px 40px -12px hsl(25 20% 30% / 0.12);
+    --shadow-hover: 0 20px 60px -20px hsl(25 20% 30% / 0.18);
+
+    /* Transitions & Animations */
+    --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
+    --transition-slow: 0.8s var(--ease-luxe);
+    --transition-medium: 0.5s var(--ease-luxe);
+    --transition-fast: 0.3s var(--ease-luxe);
+
+    --shadow-soft: 0 4px 24px -8px hsl(25 20% 30% / 0.08);
+    --shadow-card: 0 8px 40px -12px hsl(25 20% 30% / 0.12);
+    --shadow-hover: 0 20px 60px -20px hsl(25 20% 30% / 0.18);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 25 15% 8%;
+    --foreground: 36 33% 95%;
+    --card: 25 15% 10%;
+    --card-foreground: 36 33% 95%;
+    --primary: 36 33% 95%;
+    --primary-foreground: 25 15% 8%;
+    --secondary: 25 12% 16%;
+    --secondary-foreground: 36 33% 95%;
+    --muted: 25 12% 16%;
+    --muted-foreground: 30 10% 65%;
+    --accent: 95 18% 55%;
+    --accent-foreground: 0 0% 100%;
+    --border: 25 12% 18%;
+    --input: 25 12% 18%;
+    --ring: 95 18% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.005em;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  .font-display {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+
+  .font-sans-luxe {
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    font-weight: 500;
+  }
+}
+
+@layer utilities {
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity var(--transition-slow), transform var(--transition-slow);
+  }
+  .reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .marquee {
+    animation: marquee 40s linear infinite;
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .fade-slide {
+    animation: fadeSlide 1s var(--ease-luxe) both;
+  }
+  @keyframes fadeSlide {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .ken-burns {
+    animation: kenBurns 20s ease-in-out infinite alternate;
+  }
+  @keyframes kenBurns {
+    from { transform: scale(1); }
+    to { transform: scale(1.15); }
+  }
+
+  .btn-premium {
+    @apply relative overflow-hidden transition-all duration-500 ease-luxe active:scale-[0.97];
+  }
+  .btn-premium::after {
+    content: '';
+    @apply absolute inset-0 bg-accent translate-y-full transition-transform duration-500 ease-luxe -z-10;
+  }
+  .btn-premium:hover::after {
+    @apply translate-y-0;
+  }
+}
