@@ -14,7 +14,7 @@ export const Footer = () => {
             <h3 className="font-sans-luxe text-lg font-bold mb-6">Get In Touch</h3>
             <div className="space-y-4 text-[13px] text-white/90 leading-relaxed font-medium">
               <p>Address: Premium Beauty Hub, Global Distribution Center.</p>
-              <p>Email: <a href="mailto:info@wwtcosmetics.com" className="hover:text-accent transition-colors">info@wwtcosmetics.com</a></p>
+              <p>Email: <a href="mailto:info@digitalrise.marketing" className="hover:text-accent transition-colors">info@digitalrise.marketing</a></p>
               <p>Phone: <a href="https://wa.me/918520938870" className="hover:text-accent transition-colors">+91 85209 38870</a></p>
               <a href="#" className="inline-flex items-center gap-1 border-b border-white pb-0.5 hover:text-accent hover:border-accent transition-all mt-4">
                 Get direction <ArrowUpRight className="w-3 h-3" />
@@ -80,7 +80,7 @@ export const Footer = () => {
         <div className="pt-10 border-t border-white/20 relative">
           <div className="flex flex-col lg:flex-row justify-between items-center gap-6">
             <p className="text-[11px] text-white/70 font-medium text-center lg:text-left">
-              © 2026 WWT Cosmetics. All Rights Reserved
+              © 2026 digitalrise marketing. All Rights Reserved
             </p>
             
             <div className="flex gap-4 items-center">

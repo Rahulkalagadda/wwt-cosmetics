@@ -1,6 +1,6 @@
-# WWT COSMETICS - Premium Korean Skincare Hub
+# EXP | Premium Korean Skincare Hub (by digitalrise marketing)
 
-Official web platform for **WWT Cosmetics**, a global leader in authentic K-beauty distribution.
+Official web platform for **EXP**, a global leader in authentic K-beauty distribution.
 
 ## Core Features
 - **Wholesale Portal**: Bulk ordering for global retailers.

@@ -29,7 +29,7 @@ export const BrandStory = () => {
             Your Premium <em className="text-accent not-italic">K-Beauty</em> Hub.
           </h2>
           <p className="text-foreground/70 leading-relaxed mb-6 font-light text-lg">
-            WWT Cosmetics stands as a global leader in the distribution of authentic Korean beauty. We bridge the gap between Seoul's innovative labs and your doorstep.
+            EXP stands as a global leader in the distribution of authentic Korean beauty. We bridge the gap between Seoul's innovative labs and your doorstep.
           </p>
           <p className="text-foreground/60 leading-relaxed mb-10 font-light">
             Whether you're a boutique retailer or a skincare enthusiast, our curated selection of 100+ brands—including AXIS-Y, Anua, and VT Cosmetics—is chosen for one reason: results that speak for themselves.

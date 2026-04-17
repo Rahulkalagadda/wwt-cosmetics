@@ -2,14 +2,20 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover" />
     <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="EXP" />
+    <link rel="apple-touch-icon" href="/icon-512.png" />
     <!-- TODO: Set the document title to the name of your application -->
-    <title>WWT COSMETICS | Premium Korean Skincare</title>
-    <meta name="description" content="WWT Cosmetics - Your premium global destination for wholesale and retail Korean skincare brands including AXIS-Y, Anua, and COSRX." />
-    <meta name="author" content="WWT Cosmetics" />
+    <title>EXP | Premium Korean Skincare</title>
+    <meta name="description" content="EXP - Your premium global destination for wholesale and retail Korean skincare brands including AXIS-Y, Anua, and COSRX." />
+    <meta name="author" content="digitalrise marketing" />
 
-    <meta property="og:title" content="WWT COSMETICS | Premium Korean Skincare" />
+    <meta property="og:title" content="EXP | Premium Korean Skincare" />
     <meta property="og:description" content="Your premium global destination for wholesale and retail Korean skincare." />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?q=80&w=1974&auto=format&fit=crop" />
@@ -21,5 +27,12 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js');
+        });
+      }
+    </script>
   </body>
 </html>

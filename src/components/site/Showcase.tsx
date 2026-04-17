@@ -3,6 +3,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight, Heart, Eye, ShoppingBag, Star } from "lucide-react";
 import { useReveal } from "@/hooks/useReveal";
 import { QuickView } from "@/components/site/QuickView";
+import { useStore } from "@/context/StoreContext";
 import s1 from "@/assets/showcase-1.jpg";
 import s2 from "@/assets/showcase-2.jpg";
 import s3 from "@/assets/showcase-3.jpg";
@@ -14,7 +15,7 @@ import vt from "@/assets/vt-reedle.png";
 import tocobo from "@/assets/tocobo-sun.png";
 import dralthea from "@/assets/dralthea-vitc.png";
 
-const tabs = ["WWT Top brands", "New arrivals", "Wholesale Only"] as const;
+const tabs = ["EXP Top brands", "New arrivals", "Wholesale Only"] as const;
 
 const items = [
   { name: "ANUA Heartleaf 77% Soothing Toner", price: 42, image: s1, category: "Toners" },
@@ -25,8 +26,9 @@ const items = [
 ];
 
 export const Showcase = () => {
+  const { addToCart, addToWishlist } = useStore();
   const ref = useReveal<HTMLElement>();
-  const [tab, setTab] = useState<(typeof tabs)[number]>("WWT Top brands");
+  const [tab, setTab] = useState<(typeof tabs)[number]>("EXP Top brands");
   const [emblaRef, emblaApi] = useEmblaCarousel({ align: 'start', loop: false });
 
   return (
@@ -74,9 +76,12 @@ export const Showcase = () => {
                       />
                     </div>
                     <div className="flex flex-col flex-1">
-                      {/* Icons row - appearing on hover */}
-                      <div className="flex items-center gap-4 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        <button className="text-foreground/70 hover:text-black transition-colors" aria-label="Add to wishlist">
+                      {/* Icons row - visible on mobile, hover on desktop */}
+                      <div className="flex items-center gap-4 mb-4 opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <button 
+                          onClick={() => addToWishlist(p)}
+                          className="text-foreground/70 hover:text-black transition-colors" aria-label="Add to wishlist"
+                        >
                           <Heart className="w-4 h-4" />
                         </button>
                         <QuickView product={p}>
@@ -93,7 +98,15 @@ export const Showcase = () => {
                         <span className="text-[10px] text-muted-foreground ml-1 font-medium">(0)</span>
                       </div>
                       <h3 className="font-sans text-sm font-medium tracking-tight mb-2 leading-snug">{p.name}</h3>
-                      <p className="text-sm font-bold tracking-wide">{p.price}.00 AED</p>
+                      <div className="mt-auto pt-4 flex items-center justify-between gap-1">
+                        <p className="text-sm font-bold tracking-wide">{p.price}.00 AED</p>
+                        <button 
+                          onClick={() => addToCart(p)}
+                          className="bg-black text-white text-[9px] sm:text-[10px] px-3 sm:px-4 py-2 font-bold tracking-widest uppercase rounded hover:bg-accent hover:text-white transition-all active:scale-95 shadow-sm"
+                        >
+                          Add
+                        </button>
+                      </div>
                     </div>
                   </article>
                 </div>

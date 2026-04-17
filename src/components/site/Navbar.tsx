@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Search, ShoppingBag, Heart, User, ChevronDown, Menu, X } from "lucide-react";
-import badge from "@/assets/logo-badge.jpg";
+import { Link } from "react-router-dom";
+import { useStore } from "@/context/StoreContext";
+
 
 const links = [
   { name: "Home", href: "/" },
@@ -25,6 +27,7 @@ const shopMenu = {
 };
 
 export const Navbar = () => {
+  const { cart, wishlist } = useStore();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [showShop, setShowShop] = useState(false);
@@ -35,6 +38,17 @@ export const Navbar = () => {
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [open]);
 
   return (
     <header
@@ -50,16 +64,11 @@ export const Navbar = () => {
           <button onClick={() => setOpen(true)} className="lg:hidden p-2 hover:text-accent transition-colors">
             <Menu className="w-5 h-5" />
           </button>
-          <a href="#" className="flex items-center gap-3 transition-all hover:opacity-80">
-            <img 
-              src={badge} 
-              alt="Beauty Supply" 
-              className="h-8 lg:h-10 w-auto object-contain"
-            />
-            <span className="font-sans font-black text-[18px] lg:text-[22px] tracking-tight uppercase text-black">
-              WWT COSMETICS
+          <Link to="/" className="flex items-center gap-3 transition-all hover:opacity-80">
+            <span className="font-sans font-black text-[22px] lg:text-[28px] tracking-tighter uppercase text-black">
+              EXP
             </span>
-          </a>
+          </Link>
         </div>
 
         {/* Links - Center */}
@@ -89,21 +98,25 @@ export const Navbar = () => {
           <button className="p-1.5 hover:text-accent transition-colors" aria-label="Search">
             <Search className="w-[19px] h-[19px] stroke-[2]" />
           </button>
-          <button className="p-1.5 hover:text-accent transition-colors hidden md:block" aria-label="Account">
+          <Link to="/profile" className="p-1.5 hover:text-accent transition-colors hidden md:block" aria-label="Account">
             <User className="w-[19px] h-[19px] stroke-[2]" />
-          </button>
-          <button className="p-1.5 hover:text-accent transition-colors relative" aria-label="Wishlist">
+          </Link>
+          <Link to="/wishlist" className="p-1.5 hover:text-accent transition-colors relative" aria-label="Wishlist">
             <Heart className="w-[19px] h-[19px] stroke-[2]" />
-            <span className="absolute -top-0 -right-0.5 bg-[#d01c1c] text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center border border-white">
-              0
-            </span>
-          </button>
-          <button className="p-1.5 hover:text-accent transition-colors relative" aria-label="Cart">
+            {wishlist.length > 0 && (
+              <span className="absolute -top-0 -right-0.5 bg-[#d01c1c] text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center border border-white animate-in zoom-in duration-300">
+                {wishlist.length}
+              </span>
+            )}
+          </Link>
+          <Link to="/cart" className="p-1.5 hover:text-accent transition-colors relative" aria-label="Cart">
             <ShoppingBag className="w-[19px] h-[19px] stroke-[2]" />
-            <span className="absolute -top-0 -right-0.5 bg-[#d01c1c] text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center border border-white">
-              0
-            </span>
-          </button>
+            {cart.length > 0 && (
+              <span className="absolute -top-0 -right-0.5 bg-[#d01c1c] text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center border border-white animate-in zoom-in duration-300">
+                {cart.length}
+              </span>
+            )}
+          </Link>
         </div>
       </nav>
 
@@ -184,10 +197,9 @@ export const Navbar = () => {
           }`}
         >
           {/* Mobile Header */}
-          <div className="sticky top-0 bg-white z-10 p-6 flex items-center justify-between border-b border-black/5">
+          <div className="sticky top-0 bg-white z-10 px-6 pb-6 pt-[max(1.5rem,env(safe-area-inset-top))] flex items-center justify-between border-b border-black/5">
             <div className="flex items-center gap-2">
-              <img src={badge} alt="" className="h-7 w-auto" />
-              <span className="font-sans font-black text-sm tracking-tight">WWT COSMETICS</span>
+              <span className="font-sans font-black text-xl tracking-tighter">EXP</span>
             </div>
             <button onClick={() => setOpen(false)} className="p-1 hover:rotate-90 transition-transform duration-300">
               <X className="w-5 h-5" />
@@ -209,15 +221,23 @@ export const Navbar = () => {
             <nav className="space-y-1">
               {links.map((l) => (
                 <div key={l.name} className="border-b border-black/5 py-2">
-                  <button 
-                    onClick={() => l.hasMegaMenu ? setShowShop(!showShop) : setOpen(false)}
-                    className="w-full flex items-center justify-between py-3 text-[15px] font-bold tracking-tight text-foreground hover:text-black"
-                  >
-                    <span className="uppercase">{l.name}</span>
-                    {l.hasMegaMenu && (
+                  {l.hasMegaMenu ? (
+                    <button 
+                      onClick={() => setShowShop(!showShop)}
+                      className="w-full flex items-center justify-between py-3 text-[15px] font-bold tracking-tight text-foreground hover:text-black"
+                    >
+                      <span className="uppercase">{l.name}</span>
                       <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${showShop ? "rotate-180" : ""}`} />
-                    )}
-                  </button>
+                    </button>
+                  ) : (
+                    <a 
+                      href={l.href}
+                      onClick={() => setOpen(false)}
+                      className="w-full flex items-center justify-between py-3 text-[15px] font-bold tracking-tight text-foreground hover:text-black uppercase"
+                    >
+                      {l.name}
+                    </a>
+                  )}
                   
                   {l.hasMegaMenu && showShop && (
                     <div className="pl-4 py-4 space-y-6 animate-fadeSlide">
@@ -259,7 +279,7 @@ export const Navbar = () => {
               </div>
               
               <div className="space-y-1 text-sm font-medium text-foreground/60">
-                <p>Support: info@wwtcosmetics.com</p>
+                <p>Support: info@digitalrise.marketing</p>
                 <p>Worldwide Shipping Available</p>
               </div>
             </div>

@@ -1,6 +1,7 @@
 import { Plus, Star, Heart, Eye, ShoppingBag } from "lucide-react";
 import { useReveal } from "@/hooks/useReveal";
 import { QuickView } from "@/components/site/QuickView";
+import { useStore } from "@/context/StoreContext";
 import axisy from "@/assets/axisy-eye.png";
 import vt from "@/assets/vt-reedle.png";
 import tocobo from "@/assets/tocobo-sun.png";
@@ -14,6 +15,7 @@ const products = [
 ];
 
 export const Bestsellers = () => {
+  const { addToCart, addToWishlist } = useStore();
   const ref = useReveal<HTMLElement>();
   return (
     <section id="bestsellers" ref={ref} className="py-24 lg:py-32 bg-background">
@@ -47,9 +49,12 @@ export const Bestsellers = () => {
               </div>
 
               <div className="flex-1 flex flex-col pt-4">
-                {/* Icons row - appearing on hover */}
-                <div className="flex items-center gap-4 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <button className="text-foreground/70 hover:text-black transition-colors" aria-label="Add to wishlist">
+                {/* Icons row - visible on mobile, hover on desktop */}
+                <div className="flex items-center gap-4 mb-4 opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <button 
+                    onClick={() => addToWishlist(p)}
+                    className="text-foreground/70 hover:text-black transition-colors" aria-label="Add to wishlist"
+                  >
                     <Heart className="w-5 h-5" />
                   </button>
                   <QuickView product={p}>
@@ -68,7 +73,10 @@ export const Bestsellers = () => {
                 <h3 className="font-sans text-lg font-medium tracking-tight mb-1">{p.name}</h3>
                 <p className="text-sm font-bold mb-5 tracking-wide">{p.price}.00 AED</p>
                 
-                <button className="mt-auto w-full py-3.5 border border-black flex items-center justify-center gap-3 bg-white hover:bg-black hover:text-white transition-all duration-500 uppercase text-[11px] font-bold tracking-widest group/btn">
+                <button 
+                  onClick={() => addToCart(p)}
+                  className="mt-auto w-full py-3.5 border border-black flex items-center justify-center gap-3 bg-white hover:bg-black hover:text-white transition-all duration-500 uppercase text-[11px] font-bold tracking-widest group/btn"
+                >
                   <ShoppingBag className="w-4 h-4 transition-transform group-hover/btn:scale-110" strokeWidth={1.5} />
                   Add to Cart
                 </button>

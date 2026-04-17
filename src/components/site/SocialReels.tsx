@@ -8,10 +8,10 @@ import tocobo from "@/assets/tocobo-sun.png";
 import dralthea from "@/assets/dralthea-vitc.png";
 
 const reels = [
-  { image: vt, handle: "@wwtcosmetics", caption: "Premium wholesale selection" },
+  { image: vt, handle: "@exp.beauty", caption: "Premium wholesale selection" },
   { image: axisy, handle: "@kbeauty_glow", caption: "Trending in Seoul right now" },
   { image: tocobo, handle: "@luxury_skincare", caption: "The texture of pure luxury" },
-  { image: tocobo, handle: "@wwt.distributor", caption: "Authorized distribution portal" },
+  { image: tocobo, handle: "@exp.distributor", caption: "Authorized distribution portal" },
   { image: dralthea, handle: "@beauty_hacks", caption: "Your daily skin ritual" },
 ];
 
@@ -24,7 +24,7 @@ export const SocialReels = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-10 mb-12">
         <div className="reveal flex flex-col md:flex-row md:items-end md:justify-between gap-4">
           <div>
-            <p className="font-sans-luxe text-accent mb-4 tracking-[0.2em] uppercase text-[10px] font-bold">@wwtcosmetics</p>
+            <p className="font-sans-luxe text-accent mb-4 tracking-[0.2em] uppercase text-[10px] font-bold">@exp.beauty</p>
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl uppercase leading-[0.9]">Shoppable Moments</h2>
           </div>
           <a href="#" className="font-sans-luxe text-foreground/60 hover:text-accent transition-colors">

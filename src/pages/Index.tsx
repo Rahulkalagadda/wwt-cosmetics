@@ -12,10 +12,12 @@ import { Testimonials } from "@/components/site/Testimonials";
 import { TrustBar } from "@/components/site/TrustBar";
 import { Footer } from "@/components/site/Footer";
 import { WhatsAppButton } from "@/components/site/WhatsAppButton";
+import { MobileNav } from "@/components/site/MobileNav";
+import { PWAInstallPrompt } from "@/components/site/PWAInstallPrompt";
 
 const Index = () => {
   return (
-    <main className="min-h-screen bg-background selection:bg-accent/20">
+    <main className="min-h-screen bg-background selection:bg-accent/20 pb-20 lg:pb-0">
       <AnnouncementBar />
       <Navbar />
       <Hero />
@@ -30,6 +32,8 @@ const Index = () => {
       <TrustBar />
       <Footer />
       <WhatsAppButton />
+      <MobileNav />
+      <PWAInstallPrompt />
     </main>
   );
 };

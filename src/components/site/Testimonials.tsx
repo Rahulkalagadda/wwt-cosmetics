@@ -11,7 +11,7 @@ const reviews = [
     name: "Yuna Park",
     location: "Seoul, KR",
     title: "Best Wholesale Supplier",
-    body: "Working with WWT Cosmetics has streamlined our inventory. The AXIS-Y eye serum is a top seller for us, and the authenticity is always guaranteed.",
+    body: "Working with EXP has streamlined our inventory. The AXIS-Y eye serum is a top seller for us, and the authenticity is always guaranteed.",
     product: "AXIS-Y Vegan Collagen Eye Serum",
     productImage: axisy,
     price: "28.00 AED"
@@ -29,7 +29,7 @@ const reviews = [
     name: "Nadia Rahman",
     location: "Abu Dhabi, UAE",
     title: "Premium Service",
-    body: "The TOCOBO sun stick is perfectly portable. WWT is truly the one-stop shop for anyone looking for legitimate, high-end Korean skincare in the region.",
+    body: "The TOCOBO sun stick is perfectly portable. EXP is truly the one-stop shop for anyone looking for legitimate, high-end Korean skincare in the region.",
     product: "TOCOBO Vita Waterproof Sun Stick",
     productImage: tocobo,
     price: "26.00 AED"

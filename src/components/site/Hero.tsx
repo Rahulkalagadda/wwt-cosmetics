@@ -22,7 +22,7 @@ const slides = [
   {
     image: hero3,
     eyebrow: "Specialized Care",
-    title: "WWT Selections",
+    title: "EXP Selections",
     subtitle: "Professional-grade beauty routines powered by the most innovative labs in Seoul.",
     cta: "Browse Catalog",
   },
