@@ -49,7 +49,7 @@ export const QuickView = ({ product, children }: QuickViewProps) => {
               <div className="inline-flex items-center px-3 py-1 border border-black text-[10px] font-bold uppercase tracking-widest mb-6">
                 In Stock
               </div>
-              <p className="text-2xl font-bold mb-6">{product.price.toLocaleString()},00 EGP</p>
+              <p className="text-2xl font-bold mb-6">{price.toLocaleString(undefined, { minimumFractionDigits: 2 })} AED</p>
               
               <p className="text-sm text-foreground/80 leading-relaxed mb-8">
                 {product.description || "A balanced, hydrating moisturizer enriched with Madagascar Centella and Hyaluronic Acid that deeply nourishes without heaviness, leaving skin soft, supple, and protected all day."}
@@ -77,7 +77,7 @@ export const QuickView = ({ product, children }: QuickViewProps) => {
               {/* Action Buttons */}
               <div className="flex gap-2">
                 <button className="flex-1 bg-black text-white h-14 flex items-center justify-center gap-2 uppercase text-[11px] font-bold tracking-widest hover:bg-black/90 transition-all">
-                  Add to cart — {(price * quantity).toLocaleString()},00 EGP
+                  Add to cart — {(price * quantity).toLocaleString(undefined, { minimumFractionDigits: 2 })} AED
                 </button>
                 <button className="w-14 h-14 border border-black/10 flex items-center justify-center hover:bg-black hover:text-white transition-all">
                   <Heart className="w-5 h-5" />
