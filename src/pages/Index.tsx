@@ -13,7 +13,6 @@ import { TrustBar } from "@/components/site/TrustBar";
 import { Footer } from "@/components/site/Footer";
 
 const Index = () => {
-  console.log("Index Rendering...");
   return (
     <main className="min-h-screen bg-background selection:bg-accent/20">
       <AnnouncementBar />

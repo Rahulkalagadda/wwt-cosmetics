@@ -2,11 +2,10 @@ import { Play, ChevronLeft, ChevronRight, Eye } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import { useReveal } from "@/hooks/useReveal";
 import { QuickView } from "@/components/site/QuickView";
-import s1 from "@/assets/showcase-1.jpg";
-import s2 from "@/assets/showcase-2.jpg";
-import s3 from "@/assets/showcase-3.jpg";
-import centella from "@/assets/brand-centella.jpg";
-import hero3 from "@/assets/hero-3.jpg";
+import vt from "@/assets/vt-reedle.png";
+import axisy from "@/assets/axisy-eye.png";
+import tocobo from "@/assets/tocobo-sun.png";
+import dralthea from "@/assets/dralthea-vitc.png";
 
 const reels = [
   { image: vt, handle: "@wwtcosmetics", caption: "Premium wholesale selection" },
